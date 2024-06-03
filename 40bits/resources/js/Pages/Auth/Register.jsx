@@ -33,9 +33,10 @@ export default function Register() {
                 <div className="flex items-center max-w-screen-lg">
                     <img src="/assets/logo.JPG" alt="Logo" className="h-96 mb-4 mr-8" />
 
-                    <div className="bg-gray-300 p-10 rounded-lg shadow-md w-full">
-                        <h2 className="text-center text-3xl font-bold text-gray-900 mb-6">Welcome to 40-Bit</h2>
-                        <p className="text-center text-sm text-gray-600 mb-8">Sign Up to explore more.</p>
+                    <div className="bg-gray-300 p-10 rounded-lg shadow-md" style={{ width: '40rem', height: 'auto' }}>
+
+                        <h2 className="text-center text-5xl font-bold text-gray-900 mb-6">Welcome to 40-Bit</h2>
+                        <h1 className="text-center text-2xl text-gray-600 mb-8">Sign Up to explore more.</h1>
 
                         {status && <div className="mb-6 font-medium text-sm text-green-600">{status}</div>}
 
