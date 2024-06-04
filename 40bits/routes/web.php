@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Admin;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
 
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
 // Admin route
 Route::get('/admin/dashboard', function () {
     return Inertia::render('AdminDashboard');
-})->name('admin.dashboard');
+})->name('admin.dashboard')->middleware(Admin::class);
+
 
 require __DIR__.'/auth.php';

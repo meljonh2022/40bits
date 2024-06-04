@@ -12,22 +12,31 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
         >
             <Head title="Profile" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <UpdateProfileInformationForm
-                            mustVerifyEmail={mustVerifyEmail}
-                            status={status}
-                            className="max-w-xl"
-                        />
-                    </div>
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="flex items-center justify-center">
+                    <div className="bg-gray-300 p-10 rounded-lg shadow-md" style={{ width: '60rem', height: 'auto' }}>
+                        <h2 className="text-center text-5xl font-bold text-gray-900 mb-6">Edit Profile</h2>
+                        <h1 className="text-center text-2xl text-gray-600 mb-8">Update your profile information.</h1>
+                        
+                        <div className="space-y-6">
+                            <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
+                                <div className="w-full sm:w-1/2 p-6 sm:p-10 bg-white shadow sm:rounded-lg">
+                                    <UpdateProfileInformationForm
+                                        mustVerifyEmail={mustVerifyEmail}
+                                        status={status}
+                                        className="max-w-xl"
+                                    />
+                                </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <UpdatePasswordForm className="max-w-xl" />
-                    </div>
+                                <div className="w-full sm:w-1/2 p-6 sm:p-10 bg-white shadow sm:rounded-lg">
+                                    <UpdatePasswordForm className="max-w-xl" />
+                                </div>
+                            </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <DeleteUserForm className="max-w-xl" />
+                            <div className="w-full p-6 sm:p-10 bg-white shadow sm:rounded-lg">
+                                <DeleteUserForm className="max-w-xl" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
