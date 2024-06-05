@@ -2,17 +2,23 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>}
-        >
+        <AuthenticatedLayout user={auth.user}>
             <Head title="Profile" />
 
             <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="absolute top-4 left-4">
+                    <Link
+                        href={route('admin.dashboard')}
+                        className="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+                    >
+                        Dashboard
+                    </Link>
+                </div>
+                
                 <div className="flex items-center justify-center">
                     <div className="bg-gray-300 p-10 rounded-lg shadow-md" style={{ width: '60rem', height: 'auto' }}>
                         <h2 className="text-center text-5xl font-bold text-gray-900 mb-6">Edit Profile</h2>

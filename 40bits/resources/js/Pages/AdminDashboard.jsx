@@ -6,19 +6,19 @@ export default function AdminDashboard({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={(
-                <div className="flex justify-between items-center  bg-white dark:bg-black">
-                    <div className="shrink-0">
-                        <img 
-                            src="/assets/logo.JPG" 
-                            alt="Logo" 
-                            className="h-24 w-auto" // Adjust the logo size as needed
-                        />
-                    </div>
+                <div className="flex justify-between items-center bg-white dark:bg-black">
+                <Link href="/admin/dashboard">
+                    <img 
+                        src="/assets/logo.JPG" 
+                        alt="Logo" 
+                        className="h-24 w-auto cursor-pointer" 
+                    />
+                </Link>
                     <div className="flex-1 flex justify-center px-4">
                         <input 
                             type="text" 
                             placeholder="Search..."  
-                            className="w-1/2 border rounded-full py-2  focus:outline-none" 
+                            className="w-1/2 border rounded-full py-2 focus:outline-none" 
                         />
                     </div>
                 </div>
@@ -26,7 +26,7 @@ export default function AdminDashboard({ auth }) {
         >
             <Head title="Admin Dashboard" />
 
-            <div className="flex pt-7 pl-4" style={{ height: '750px' }}>
+            <div className="flex pt-4 pl-4" style={{ height: '750px' }}>
                 <aside 
                     className="bg-gray-300 dark:bg-gray-900 w-32 h-100 flex flex-col items-center py-6 rounded-full"
                 >
@@ -69,8 +69,8 @@ export default function AdminDashboard({ auth }) {
                 </aside>
 
                 <div className="flex-1 flex flex-col">
-                    <main className="p-10">
-                        <div className="py-12">
+                    <main className="p-4">
+                        <div className="py-4">
                             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                     <div className="p-6 text-gray-900">You're logged in!</div>

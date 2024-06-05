@@ -7,13 +7,13 @@ export default function Dashboard({ auth }) {
             user={auth.user}
             header={(
                 <div className="flex justify-between items-center p-8 bg-white dark:bg-black">
-                    <div className="shrink-0">
+                    <Link href="/dashboard">
                         <img 
                             src="/assets/logo.JPG" 
                             alt="Logo" 
-                            className="h-24 w-auto" // Adjust the logo size as needed
+                            className="h-24 w-auto cursor-pointer" 
                         />
-                    </div>
+                    </Link>
                     <div className="flex-1 flex justify-center px-4">
                         <input 
                             type="text" 
