@@ -5,12 +5,12 @@ Change it into .env
 
 Go to the .env
 You can see thers a code like this
-# DB_CONNECTION=sqlite
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=laravel
-# DB_USERNAME=root
-# DB_PASSWORD=
+\ # DB_CONNECTION=sqlite
+\ # DB_HOST=127.0.0.1
+\ # DB_PORT=3306
+\ # DB_DATABASE=laravel
+\ # DB_USERNAME=root
+\ # DB_PASSWORD=
 
 after you find the #
 copy this and paste it
