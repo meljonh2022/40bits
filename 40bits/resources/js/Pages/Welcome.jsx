@@ -22,11 +22,13 @@ export default function Welcome({ auth }) {
             <aside
                 className="bg-gray-300 dark:bg-gray-900 w-32 h-100 flex flex-col items-center py-6 rounded-full"
             >
-                <img
-                    src="/assets/logo.JPG"
-                    alt="Logo"
-                    className="w-30 h-30 mb-12"
-                />
+                <Link href="/">
+                    <img
+                        src="/assets/logo.JPG"
+                        alt="Logo"
+                        className="w-30 h-30 mb-12 cursor-pointer"
+                    />
+                </Link>
                 <nav
                     className="flex flex-col gap-10 mt-12"
                 >
