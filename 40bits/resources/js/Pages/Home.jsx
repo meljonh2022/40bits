@@ -4,7 +4,9 @@ export default function Home({ auth }) {
     return (
         <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 flex items-center justify-center min-h-screen">
             <div className="flex items-center">
-                <img src="/assets/logo.JPG" alt="40-Bit Logo" className="w-96 h-96" />
+                <Link href="/">
+                    <img src="/assets/logo.JPG" alt="40-Bit Logo" className="w-96 h-96 cursor-pointer" />
+                </Link>
             </div>
             <div className="ml-8 md:ml-16 md:p-10 bg-gray-300 dark:bg-gray-800 rounded-lg text-center shadow-md border border-gray-900 dark:border-gray-900">
                 <h2 className="text-4xl md:text-6xl font-semibold text-black dark:text-white">Welcome to 40-Bit</h2>

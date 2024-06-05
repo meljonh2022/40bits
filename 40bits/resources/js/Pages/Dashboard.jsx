@@ -1,39 +1,37 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
+import { useEffect } from 'react';
 
 export default function Dashboard({ auth }) {
+    useEffect(() => {
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+        const showSlides = () => {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        };
+        showSlides();
+    }, []);
+
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={(
-                <div className="flex justify-between items-center p-8 bg-white dark:bg-black">
-                    <Link href="/dashboard">
-                        <img 
-                            src="/assets/logo.JPG" 
-                            alt="Logo" 
-                            className="h-24 w-auto cursor-pointer" 
-                        />
-                    </Link>
-                    <div className="flex-1 flex justify-center px-4">
-                        <input 
-                            type="text" 
-                            placeholder="Search..."  
-                            className="w-1/2 border rounded-full py-2 px-4 focus:outline-none" // Adjusted width to w-1/2
-                        />
-                    </div>
-                </div>
-            )}
         >
-            <Head title="Dashboard" />
+            <Head title="Admin Dashboard" />
 
-            <div className="flex pt-7 pl-4" style={{ height: '750px' }}>
+            <div className="flex pt-4 pl-4" style={{ height: '750px' }}>
                 <aside 
                     className="bg-gray-300 dark:bg-gray-900 w-32 h-100 flex flex-col items-center py-6 rounded-full"
                 >
                     <img 
                         src="/assets/logo.JPG" 
                         alt="Logo" 
-                        className="w-30 h-30 mb-12" 
+                        className="w-30 h-30 mb-12 rounded-full border border-gray-300" 
                     />
                     <nav 
                         className="flex flex-col gap-10 mt-12"
@@ -69,11 +67,35 @@ export default function Dashboard({ auth }) {
                 </aside>
 
                 <div className="flex-1 flex flex-col">
-                    <main className="p-10">
-                        <div className="py-12">
+                    <div className="flex justify-between items-center bg-white dark:bg-black">
+                        <div className="flex-1 flex justify-end px-4 pr-32">
+                            <input 
+                                type="text" 
+                                placeholder="Search..."  
+                                className="w-64 border rounded-full py-2 focus:outline-none" 
+                            />
+                        </div>
+                    </div>
+                    <main className="p-4">
+                        <div className="py-4">
                             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                    <div className="p-6 text-gray-900">You're logged in!</div>
+                                    <div className="p-6 text-gray-900">
+                                        <div className="relative w-full max-w-10xl mx-auto">
+                                            <div className="slide" style={{ display: 'none' }}>
+                                                <img src="/assets/header-home.png" alt="Slide 1" className="w-full rounded-xl  border border-gray-300" />
+                                            </div>
+                                            <div className="slide" style={{ display: 'none' }}>
+                                                <img src="/assets/header-home-second.png" alt="Slide 2" className="w-full rounded-xl  border border-gray-300" />
+                                            </div>
+                                            <div className="slide" style={{ display: 'none' }}>
+                                                <img src="/assets/header-home-third.png" alt="Slide 3" className="w-full rounded-xl border border-gray-300" />
+                                            </div>
+                                            <div className="slide" style={{ display: 'none' }}>
+                                                <img src="/assets/header-home-fourth.png" alt="Slide 4" className="w-full rounded-xl  border border-gray-300" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,7 +31,9 @@ export default function Register() {
 
             <div className="flex items-center justify-center">
                 <div className="flex items-center max-w-screen-lg">
-                    <img src="/assets/logo.JPG" alt="Logo" className="h-96 mb-4 mr-8" />
+                    <Link href="/">
+                        <img src="/assets/logo.JPG" alt="Logo" className="h-96 mb-4 mr-8 cursor-pointer" />
+                    </Link>
 
                     <div className="bg-gray-300 p-10 rounded-lg shadow-md" style={{ width: '40rem', height: 'auto' }}>
 

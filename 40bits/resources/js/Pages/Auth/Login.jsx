@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,8 +31,9 @@ export default function Login({ status, canResetPassword }) {
 
             <div className="flex items-center justify-center">
                 <div className="flex flex-col items-center mr-8">
-                    <img src="/assets/logo.JPG" alt="Logo" className="h-96 mb-6" />
-                    {/* Increased image height to h-96 */}
+                    <Link href="/">
+                        <img src="/assets/logo.JPG" alt="Logo" className="h-96 mb-6 cursor-pointer" />
+                    </Link>
                 </div>
 
                 <div className="w-full max-w-md bg-gray-200 p-8 rounded-lg shadow-md">
