@@ -77,7 +77,7 @@ function DeleteProducts() {
       </Link>
 
       
-      <h1>Products</h1>
+      <h1 className="text-3xl pt-3 font-bold mb-4">List products</h1>
       {editingProduct ? (
         <form onSubmit={handleUpdate} className="mb-6">
           <input
