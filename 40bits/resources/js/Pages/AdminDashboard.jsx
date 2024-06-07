@@ -1,9 +1,20 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function AdminDashboard({ auth }) {
+    const [products, setProducts] = useState([]);
+
     useEffect(() => {
+        axios.get('/products')
+            .then(response => {
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
+
         let slideIndex = 0;
         const slides = document.getElementsByClassName("slide");
         const showSlides = () => {
@@ -45,7 +56,7 @@ export default function AdminDashboard({ auth }) {
                                 <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8 10h4v4H8v-4zM8 6h4v2H8V6z" />
                             </svg>
                         </Link>
-                        <Link href="/profile" className="text-yellow-500">
+                        <Link href="/addproduct" className="text-yellow-500">
                             <svg 
                                 className="w-10 h-10" 
                                 fill="currentColor" 
@@ -95,6 +106,19 @@ export default function AdminDashboard({ auth }) {
                                                 <img src="/assets/header-home-fourth.png" alt="Slide 4" className="w-full rounded-xl  border border-gray-300" />
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="text-center text-3xl ">
+                                    <h1>Products</h1>
+                                    <div className="grid grid-cols-3 gap-4 mt-6">
+                                        {products.map(product => (
+                                            <div key={product.id} className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md">
+                                                <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-48 object-cover rounded-lg mb-4" />
+                                                <h2 className="text-2xl font-semibold">{product.name}</h2>
+                                                <p className="text-lg">{product.category}</p>
+                                                <p className="text-xl font-bold">${product.price}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
