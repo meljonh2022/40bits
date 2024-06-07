@@ -25,8 +25,14 @@ Route::get('/addproduct', function () {
     return Inertia::render('AddProduct');
 })->name('addproduct');
 
+Route::get('/editproducts', function () {
+    return Inertia::render('EditProducts');
+})->name('editproducts');
+
+Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
+Route::post('/products/{id}', [ProductController::class, 'update']); 
 
 Route::get('/posts', function () {
     return Inertia::render('Posts/PostComponent');

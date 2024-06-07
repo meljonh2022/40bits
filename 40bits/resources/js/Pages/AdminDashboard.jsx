@@ -65,7 +65,7 @@ export default function AdminDashboard({ auth }) {
                                 <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2c-2.21 0-6 1.12-6 3v1h12v-1c0-1.88-3.79-3-6-3z" />
                             </svg>
                         </Link>
-                        <Link href="/logout" className="text-yellow-500">
+                        <Link href="/editproducts" className="text-yellow-500">
                             <svg 
                                 className="w-10 h-10" 
                                 fill="currentColor" 
