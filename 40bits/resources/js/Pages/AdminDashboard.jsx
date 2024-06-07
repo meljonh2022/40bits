@@ -67,15 +67,7 @@ export default function AdminDashboard({ auth }) {
                     <nav 
                         className="flex flex-col gap-10 mt-12"
                     >
-                        <Link href="/" className="text-yellow-500">
-                            <svg 
-                                className="w-10 h-10" 
-                                fill="currentColor" 
-                                viewBox="0 0 20 20"
-                            >
-                                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8 10h4v4H8v-4zM8 6h4v2H8V6z" />
-                            </svg>
-                        </Link>
+
                         <Link href="/addproduct" className="text-yellow-500">
                             <svg 
                                 className="w-10 h-10" 

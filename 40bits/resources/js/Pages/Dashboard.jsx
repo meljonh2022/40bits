@@ -3,10 +3,10 @@ import { Head, Link } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function AdminDashboard({ auth }) {
+export default function Dashboard({ auth }) {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const [buttonColor, setButtonColor] = useState('green'); 
+    const [buyMessage, setBuyMessage] = useState('');
 
     useEffect(() => {
         axios.get('/products')
@@ -32,24 +32,19 @@ export default function AdminDashboard({ auth }) {
     }, []);
 
     const handleSearch = () => {
-
+        // Filter products based on searchQuery
         const filteredProducts = products.filter(product =>
             product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
         return filteredProducts;
     };
 
-    const handleButtonClick = () => {
-     
-        setButtonColor('blue');
-        
-   
+    const handleBuy = (productId) => {
+        setBuyMessage('Successful Buy');
         setTimeout(() => {
-            setButtonColor('green');
-        }, 500);
-   
+            setBuyMessage('');
+        }, 1000); 
     };
-
 
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -67,7 +62,7 @@ export default function AdminDashboard({ auth }) {
                     <nav 
                         className="flex flex-col gap-10 mt-12"
                     >
-                        <Link href="/dashboard" className="text-yellow-500">
+                        <Link href="/" className="text-yellow-500">
                             <svg 
                                 className="w-10 h-10" 
                                 fill="currentColor" 
@@ -82,12 +77,12 @@ export default function AdminDashboard({ auth }) {
                                 fill="currentColor" 
                                 viewBox="0 0 576 512"
                             >
-              
-                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                                {/* Your new SVG code */}
+                                <path d="M248 0H208c-26.5 0-48 21.5-48 48V160c0 35.3 28.7 64 64 64H352c35.3 0 64-28.7 64-64V48c0-26.5-21.5-48-48-48H328V80c0 8.8-7.2 16-16 16H264c-8.8 0-16-7.2-16-16V0zM64 256c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H224c35.3 0 64-28.7 64-64V320c0-35.3-28.7-64-64-64H184v80c0 8.8-7.2 16-16 16H120c-8.8 0-16-7.2-16-16V256H64zM352 512H512c35.3 0 64-28.7 64-64V320c0-35.3-28.7-64-64-64H472v80c0 8.8-7.2 16-16 16H408c-8.8 0-16-7.2-16-16V256H352c-15 0-28.8 5.1-39.7 13.8c4.9 10.4 7.7 22 7.7 34.2V464c0 12.2-2.8 23.8-7.7 34.2C323.2 506.9 337 512 352 512z"/>
                             </svg>
                         </Link>
 
-                        <Link href="/profile" className="text-yellow-500">
+                        <Link href="/editproducts" className="text-yellow-500">
                             <svg 
                                 className="w-10 h-10" 
                                 fill="currentColor" 
@@ -111,8 +106,8 @@ export default function AdminDashboard({ auth }) {
                                 className="w-64 border rounded-full py-2 px-4 focus:outline-none" 
                             />
                             <button 
-                                onClick={handleButtonClick} 
-                                className={`ml-2 px-4 py-2 bg-${buttonColor}-500 text-white rounded-lg`}
+                                onClick={handleSearch} 
+                                className="ml-2 px-4 py-2 bg-green-500 text-white rounded-lg"
                             >
                                 Search
                             </button>
@@ -143,7 +138,7 @@ export default function AdminDashboard({ auth }) {
                                     <div className="grid grid-cols-3 gap-4 mt-6">
                                         {handleSearch().map(product => (
                                             <div key={product.id} className="p-4 text-center bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md">
-                                                <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-55 object-cover rounded-lg mb-4" />
+                                                <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                                                 <h2 className="text-2xl font-semibold">{product.name}</h2>
                                                 <p className="text-lg">{product.category}</p>
                                                 <p className="text-xl font-bold">${product.price}</p>
@@ -151,6 +146,7 @@ export default function AdminDashboard({ auth }) {
                                             </div>
                                         ))}
                                     </div>
+                                    {buyMessage && <p className="text-green-500 mt-4">{buyMessage}</p>}
                                 </div>
                             </div>
                         </div>

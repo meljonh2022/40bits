@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
+import { Link } from '@inertiajs/react'; 
 
 export default function AddProduct({ auth }) {
     const [name, setName] = useState('');
@@ -20,6 +21,12 @@ export default function AddProduct({ auth }) {
 
     return (
         <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 flex items-center justify-center min-h-screen">
+            <Link href={route('admin.dashboard')} passHref>
+                <a className="absolute top-2 pl-2 pt-2 left-3 px-4 py-2 bg-yellow-500 hover:bg-blue-500 rounded-lg">
+                    <span className="absolute inset-0"></span> {/* This is for the rectangle */}
+                    <span className="relative z-10">Dashboard</span>
+                </a>
+            </Link>
             <div className="flex items-center">
                 <div className="p-10 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                     <h2 className="text-4xl md:text-6xl font-semibold text-black dark:text-white">Add Product</h2>

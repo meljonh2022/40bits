@@ -7,6 +7,7 @@ use App\Http\Middleware\Admin;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -37,6 +38,7 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::post('/products/{id}', [ProductController::class, 'update']); 
+Route::post('/add-to-cart', [CartController::class, 'store'])->middleware('auth');
 
 Route::get('/posts', function () {
     return Inertia::render('Posts/PostComponent');
